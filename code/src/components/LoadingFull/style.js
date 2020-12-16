@@ -11,7 +11,7 @@ export const Container = styled.View`
   padding: 10px;
   justify-content: center;
   align-items: center;
-  background-color: rgba(128, 128, 128, 0.2);
+  background-color: ${COLORS.grayOpacity(0.2)};
 `
 
 Container.Text = styled.Text`
