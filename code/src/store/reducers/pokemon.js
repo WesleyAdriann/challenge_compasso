@@ -4,9 +4,9 @@ const INITIAL_STATE = {
   pokemon: {}
 }
 
-const pokemonList = (state = INITIAL_STATE, action) => {
+const pokemon = (state = INITIAL_STATE, action) => {
   switch (action.type) {
-    case pokemonTypes.SETPOKEMONS:
+    case pokemonTypes.SETPOKEMON:
       return {
         ...state,
         pokemon: action.pokemon
@@ -16,4 +16,4 @@ const pokemonList = (state = INITIAL_STATE, action) => {
   }
 }
 
-export default pokemonList
+export default pokemon

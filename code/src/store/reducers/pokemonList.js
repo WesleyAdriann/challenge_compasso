@@ -1,7 +1,9 @@
 import { pokemonListTypes } from '../actionsTypes'
 
 const INITIAL_STATE = {
-  pokemonList: [1, 2, 3]
+  pokemonList: [],
+  page: 0,
+  perPage: 30,
 }
 
 const pokemonList = (state = INITIAL_STATE, action) => {
@@ -9,7 +11,17 @@ const pokemonList = (state = INITIAL_STATE, action) => {
     case pokemonListTypes.SETPOKEMONS:
       return {
         ...state,
-        pokemonList: [...state.pokemonsList, action.pokemonList]
+        pokemonList: [...state.pokemonList, ...action.pokemonList]
+      }
+    case pokemonListTypes.SETPAGE:
+      return {
+        ...state,
+        page: action.page,
+      }
+    case pokemonListTypes.SETPERPAGE:
+      return {
+        ...state,
+        perPage: action.perPage
       }
     default:
       return state
