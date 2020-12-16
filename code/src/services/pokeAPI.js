@@ -2,7 +2,7 @@ import axios from 'axios'
 
 import { ENDPOINTS } from '../settings'
 
-const { baseURL } = ENDPOINTS.pokeApi
+const { BASE_URL: baseURL } = ENDPOINTS.pokeApi
 
 const pokeApi = axios.create({ baseURL })
 
@@ -17,7 +17,10 @@ export const getPokemonsList = (page, perPage) => {
   return new Promise((resolve, reject) => {
     pokeApi.get(route)
       .then(resolve)
-      .catch(reject)
+      .catch((error) => {
+        console.log(`Error in getPokemonsList: \n${error}\n ${error.response}\n ${error.message}`)
+        reject(error)
+      })
   })
 }
 
@@ -31,6 +34,9 @@ export const getPokemon = (id) => {
   return new Promise((resolve, reject) => {
     pokeApi.get(route)
       .then(resolve)
-      .catch(reject)
+      .catch((error) => {
+        console.log(`Error in getPokemonsList: \n${error}\n ${error.response}\n ${error.message}`)
+        reject(error)
+      })
   })
 }
