@@ -1,6 +1,6 @@
 import React from 'react'
 import { NavigationContainer } from '@react-navigation/native'
-import { createStackNavigator } from '@react-navigation/stack'
+import { createStackNavigator, CardStyleInterpolators } from '@react-navigation/stack'
 
 import PokemonList from './screens/PokemonList'
 import Pokemon from './screens/Pokemon'
@@ -14,6 +14,7 @@ const Routes = () => (
       <Stack.Navigator
         initialRouteName={ROUTES.pokemonList}
         headerMode='none'
+        screenOptions={{ cardStyleInterpolator: CardStyleInterpolators.forHorizontalIOS }}
       >
         <Stack.Screen name={ROUTES.pokemonList} component={PokemonList} />
         <Stack.Screen name={ROUTES.pokemon} component={Pokemon} />
