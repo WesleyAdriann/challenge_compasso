@@ -1,6 +1,6 @@
 import { pokemonTypes } from '../actionsTypes'
 
 export const setPokemon = (pokemon) => ({
-  action: pokemonTypes.SETPOKEMON,
+  type: pokemonTypes.SETPOKEMON,
   pokemon
 })
