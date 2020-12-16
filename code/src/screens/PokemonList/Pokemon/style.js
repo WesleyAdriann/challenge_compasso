@@ -4,8 +4,11 @@ import { globalStyles } from '../../../style'
 
 export const PokemonContainer = styled.TouchableOpacity`
   align-items: center;
-  margin: 8px 0;
-  width: 33%;
+  border-color: red;
+  border-radius: 8px;
+  border-width: 1px;
+  margin: 8px;
+  flex-grow: 1;
 `
 
 export const PokemonImage = styled.Image`
