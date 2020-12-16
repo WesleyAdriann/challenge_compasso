@@ -25,7 +25,6 @@ export const getPokemonsList = (page, perPage) => {
  * Route to get pokemon using id
  * @param {number | string} id - Pokemon id
  */
-
 export const getPokemon = (id) => {
   const route = ENDPOINTS.pokeApi.pokemon(id)
 
