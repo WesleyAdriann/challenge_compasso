@@ -3,7 +3,7 @@ import { pokemonListTypes } from '../actionsTypes'
 const INITIAL_STATE = {
   pokemonList: [],
   page: 0,
-  perPage: 30,
+  perPage: 21,
 }
 
 const pokemonList = (state = INITIAL_STATE, action) => {
