@@ -1,6 +1,7 @@
 import React from 'react'
 import { View, Text, TouchableOpacity } from 'react-native'
 import { useSelector } from 'react-redux'
+import PropTypes from 'prop-types'
 
 const PokemonList = ({ navigation }) => {
   const pokemonList = useSelector((state) => state.pokemonList)
@@ -13,6 +14,10 @@ const PokemonList = ({ navigation }) => {
       </TouchableOpacity>
     </View>
   )
+}
+
+PokemonList.propTypes = {
+  navigation: PropTypes.object.isRequired
 }
 
 export default PokemonList
