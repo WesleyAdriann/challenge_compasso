@@ -8,6 +8,7 @@ import { setPokemons, handleChangeText, setPage, setIsLoading } from '../../stor
 import { getPokemonsList } from '../../services/pokeAPI'
 
 import LoadingFull from '../../components/LoadingFull'
+import Loading from '../../components/Loading'
 
 import Pokemon from './Pokemon'
 import SearchBar from './SearchBar'
@@ -25,7 +26,6 @@ const PokemonList = ({ navigation }) => {
     dispatch(setIsLoading(true))
     clearTimeout(requesTimeout)
     requesTimeout = setTimeout(() => {
-      console.log('request')
       getPokemonsList(pageToRequest, perPage)
         .then(({ data }) => {
           const { results } = data
@@ -60,7 +60,7 @@ const PokemonList = ({ navigation }) => {
 
   return (
     <ScreenContainer>
-      <LoadingFull visible={isLoading} />
+      <LoadingFull visible={!pokemonList.length && isLoading} />
       <SearchBar
         handleInputChange={handleInputChange}
         searchValue={searchInput}
@@ -70,7 +70,8 @@ const PokemonList = ({ navigation }) => {
         numColumns={3}
         renderItem={({ item, index }) => <Pokemon key={`${index}-${item.id}`} id={item.id} name={item.name} /> }
         onEndReached={handleLoadMorePokemon}
-        onEndReachedThreshold={1}
+        onEndReachedThreshold={0.5}
+        ListFooterComponent={() => <Loading visible={pokemonList.length && isLoading} /> }
       />
     </ScreenContainer>
   )
