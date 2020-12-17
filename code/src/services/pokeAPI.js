@@ -7,7 +7,7 @@ const { BASE_URL: baseURL } = ENDPOINTS.pokeApi
 const pokeApi = axios.create({ baseURL })
 
 /**
- * Route to get list of pokemons
+ * Request to get list of pokemons
  * @param {number | string} page - Current page
  * @param {number | string} perPage - Quantity of pokemons per page
  */
@@ -25,8 +25,8 @@ export const getPokemonsList = (page, perPage) => {
 }
 
 /**
- * Route to get pokemon using id
- * @param {number | string} id - Pokemon id
+ * Request to get pokemon using id
+ * @param {number | string} id - Pokemon id or name
  */
 export const getPokemon = (id) => {
   const route = ENDPOINTS.pokeApi.pokemon(id)
@@ -35,7 +35,24 @@ export const getPokemon = (id) => {
     pokeApi.get(route)
       .then(resolve)
       .catch((error) => {
-        console.log(`Error in getPokemonsList: \n${error}\n ${error.response}\n ${error.message}`)
+        console.log(`Error in getPokemon: \n${error}\n ${error.response}\n ${error.message}`)
+        reject(error)
+      })
+  })
+}
+
+/**
+ * Request to get pokemon specie details
+ * @param {number | string} id - Pokemon id or name
+ */
+export const getPokemonSpecie = (id) => {
+  const route = ENDPOINTS.pokeApi.pokemonSpecie(id)
+
+  return new Promise((resolve, reject) => {
+    pokeApi.get(route)
+      .then((resolve))
+      .catch((error) => {
+        console.log(`Error in getPokemonSpecie: \n${error}\n ${error.response}\n ${error.message}`)
         reject(error)
       })
   })
