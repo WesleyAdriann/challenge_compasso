@@ -5,6 +5,11 @@ export const setPokemons = (pokemonList) => ({
   pokemonList
 })
 
+export const setGenerations = (generationList) => ({
+  type: pokemonListTypes.SETGENERATIONS,
+  generationList
+})
+
 export const setPage = (page) => ({
   type: pokemonListTypes.SETPAGE,
   page

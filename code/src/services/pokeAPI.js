@@ -57,3 +57,20 @@ export const getPokemonSpecie = (id) => {
       })
   })
 }
+
+/**
+ * Route to get all pokemon generation or only one generation
+ * @param {number | string} generationId - Pokemon generation id
+ */
+export const getGenerationsList = (generationId = '') => {
+  const route = ENDPOINTS.pokeApi.generations(generationId)
+
+  return new Promise((resolve, reject) => {
+    pokeApi.get(route)
+      .then(resolve)
+      .catch((error) => {
+        console.log(`Error in getGenerationsList: \n${error}\n ${error.response}\n ${error.message}`)
+        reject(error)
+      })
+  })
+}

@@ -3,9 +3,9 @@ import { Alert } from 'react-native'
 import { useSelector, useDispatch } from 'react-redux'
 import PropTypes from 'prop-types'
 
-import { setPokemons, handleChangeText, setPage, setIsLoading } from '../../store/actions/pokemonList'
-
-import { getPokemonsList } from '../../services/pokeAPI'
+import { setPokemons, handleChangeText, setPage, setIsLoading, setGenerations } from '../../store/actions/pokemonList'
+import { getPokemonsList, getGenerationsList } from '../../services/pokeAPI'
+import { string } from '../../utils'
 
 import LoadingFull from '../../components/LoadingFull'
 import Loading from '../../components/Loading'
@@ -18,7 +18,7 @@ let requesTimeout = 0
 
 const PokemonList = ({ navigation }) => {
   const dispatch = useDispatch()
-  const { pokemonList, page, perPage, searchInput, isLoading } = useSelector((state) => state.pokemonList)
+  const { pokemonList, page, perPage, searchInput, isLoading, generationList } = useSelector((state) => state.pokemonList)
 
   const requestPokemonList = (pageToRequest, more = false) => {
     if (isNaN(pageToRequest)) return
@@ -47,6 +47,36 @@ const PokemonList = ({ navigation }) => {
     }, 500)
   }
 
+  const requestPokemonGenerations = () => {
+    if (generationList.length) return
+
+    getGenerationsList()
+      .then(({ data }) => {
+        const { results } = data
+        const generations = results.map((generation) => {
+          const id = generation.url.split('generation/').pop().replace(/\D/g, '')
+          const [genName, genNumber] = generation.name.split('-')
+          const name = `${string.capitalize(genName)} ${genNumber.toUpperCase()}`
+          return { ...generation, name, id }
+        })
+        console.log(generations)
+        dispatch(setGenerations(generations))
+      })
+      .catch((error) => {
+        console.log('requestPokemonList error:', error)
+        setTimeout(requestPokemonGenerations, 5000)
+      })
+  }
+
+  const requestPokemonSearch = () => {
+    if (!searchInput) Alert.alert('', 'Insert Pokemon name or number')
+
+    clearTimeout(requesTimeout)
+    requesTimeout = setTimeout(() => {
+
+    }, 500)
+  }
+
   const handleLoadMorePokemon = () => {
     const nextPageToRequest = page + 1
     requestPokemonList(nextPageToRequest, true)
@@ -55,7 +85,8 @@ const PokemonList = ({ navigation }) => {
   const handleInputChange = (inputName) => (text) => dispatch(handleChangeText(text, inputName))
 
   useEffect(() => {
-    requestPokemonList(0)
+    // requestPokemonList(0)
+    requestPokemonGenerations()
   }, [])
 
   return (
@@ -64,6 +95,7 @@ const PokemonList = ({ navigation }) => {
       <SearchBar
         handleInputChange={handleInputChange}
         searchValue={searchInput}
+        handlePressSearchPokemon={requestPokemonSearch}
       />
       <PokemonsFlatList
         data={pokemonList}
@@ -71,7 +103,7 @@ const PokemonList = ({ navigation }) => {
         renderItem={({ item, index }) => <Pokemon key={`${index}-${item.id}`} id={item.id} name={item.name} /> }
         onEndReached={handleLoadMorePokemon}
         onEndReachedThreshold={0.5}
-        ListFooterComponent={() => <Loading visible={pokemonList.length && isLoading} /> }
+        ListFooterComponent={() => <Loading visible={!!pokemonList.length && isLoading} /> }
       />
     </ScreenContainer>
   )

@@ -9,6 +9,7 @@ const INITIAL_STATE = {
     PokemonList: [],
     page: 0
   },
+  generationList: [],
   isLoading: false
 }
 
@@ -38,6 +39,11 @@ const pokemonList = (state = INITIAL_STATE, action) => {
       return {
         ...state,
         isLoading: action.isLoading
+      }
+    case pokemonListTypes.SETGENERATIONS:
+      return {
+        ...state,
+        generationList: action.generationList
       }
     default:
       return state

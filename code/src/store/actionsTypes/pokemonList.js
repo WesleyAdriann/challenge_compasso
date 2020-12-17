@@ -1,6 +1,7 @@
 const prefix = 'POKEMON_LIST'
 export const pokemonListTypes = {
   SETPOKEMONS: `${prefix}_SET_POKEMONS`,
+  SETGENERATIONS: `${prefix}_SET_GENERATIONS`,
   SETPAGE: `${prefix}_SET_PAGE`,
   SETPERPAGE: `${prefix}_SET_PER_PAGE`,
   HANDLECHANGETEXT: `${prefix}_HANDLE_CHANGE_TEXT`,
