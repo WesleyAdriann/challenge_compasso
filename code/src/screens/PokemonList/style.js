@@ -10,6 +10,8 @@ export const ScreenContainer = styled.SafeAreaView`
   border-color: ${COLORS.primaryRed};
 `
 
-export const PokemonsFlatList = styled.FlatList`
-  padding: 8px 0;
-`
+export const PokemonsFlatList = styled.FlatList.attrs(() => ({
+  contentContainerStyle: {
+    paddingVertical: 8
+  },
+}))``

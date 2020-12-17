@@ -1,5 +1,4 @@
 import React, { useEffect } from 'react'
-import { Text } from 'react-native'
 import { useSelector, useDispatch } from 'react-redux'
 import PropTypes from 'prop-types'
 
@@ -38,7 +37,7 @@ const PokemonList = ({ navigation }) => {
       <PokemonsFlatList
         data={pokemonList}
         numColumns={3}
-        renderItem={({item}) => <Pokemon key={item.id} id={item.id} name={item.name} /> }
+        renderItem={({item}, i) => <Pokemon key={String(i)} id={item.id} name={item.name} /> }
       />
     </ScreenContainer>
   )
