@@ -1,7 +1,7 @@
-import {css} from 'styled-components/native';
+import { css } from 'styled-components/native'
 
 export const globalStyles = {
   defaultFont: css`
     font-family: 'Roboto';
-  `,
-};
+  `
+}
