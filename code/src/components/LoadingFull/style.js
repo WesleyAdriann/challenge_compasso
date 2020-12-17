@@ -11,10 +11,10 @@ export const Container = styled.View`
   padding: 10px;
   justify-content: center;
   align-items: center;
-  background-color: ${COLORS.grayOpacity(0.2)};
+  background-color: ${COLORS.grayOpacity(0.4)};
 `
 
 Container.Text = styled.Text`
-  color: ${COLORS.white};
+  color: white;
   padding-top: 10px;
 `
