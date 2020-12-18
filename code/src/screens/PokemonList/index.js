@@ -86,10 +86,12 @@ const PokemonList = ({ navigation }) => {
       getGenerationsList(generationId)
         .then(({ data }) => {
           const { pokemon_species: results } = data
-          const pokemons = results.map((poke) => {
-            const id = poke.url.split('pokemon-species/').pop().replace(/\D/g, '')
-            return { ...poke, id }
-          })
+          const pokemons = results
+            .map((poke) => {
+              const id = poke.url.split('pokemon-species/').pop().replace(/\D/g, '')
+              return { ...poke, id }
+            })
+            .sort(({ id: aId }, { id: bId }) => aId - bId)
           dispatch(setPokemons(pokemons))
           dispatch(setPage(0))
           dispatch(setSelectedGeneration(generationId))
