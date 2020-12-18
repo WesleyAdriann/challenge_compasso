@@ -14,6 +14,7 @@ import {
   setWasSearched
 } from '../../store/actions/pokemonList'
 import { getPokemonsList, getGenerationsList, getPokemon } from '../../services/pokeAPI'
+import { ROUTES } from '../../settings'
 
 import LoadingFull from '../../components/LoadingFull'
 import Loading from '../../components/Loading'
@@ -39,6 +40,10 @@ const PokemonList = ({ navigation }) => {
     wasSearched
   } = useSelector((state) => state.pokemonList)
 
+  /**
+   * Function to request pokemon list and set in redux store
+   * @param {number} pageToRequest - Page to search
+   */
   const requestPokemonList = (pageToRequest) => {
     if (isNaN(pageToRequest)) return
     dispatch(setIsLoading(true))
@@ -71,6 +76,9 @@ const PokemonList = ({ navigation }) => {
     }, 500)
   }
 
+  /**
+   * Request to get list of pokemons generations
+   */
   const requestPokemonGenerations = () => {
     if (generationList.length) return
     getGenerationsList()
@@ -88,6 +96,10 @@ const PokemonList = ({ navigation }) => {
       })
   }
 
+  /**
+   * Request to get pokemons from one generation
+   * @param {number} generationId - Id of pokemon generation
+   */
   const requestPokemonsFromGeneration = (generationId) => {
     dispatch(setIsLoading(true))
     clearTimeout(requesTimeout)
@@ -116,6 +128,9 @@ const PokemonList = ({ navigation }) => {
     }, 500)
   }
 
+  /**
+   * Request to search pokemon using name or number
+   */
   const requestPokemonSearch = () => {
     dispatch(setIsLoading(true))
     clearTimeout(requesTimeout)
@@ -148,6 +163,9 @@ const PokemonList = ({ navigation }) => {
     }, 500)
   }
 
+  /**
+   * Handler to load more pokemons in infinity scroll
+   */
   const handleLoadMorePokemon = () => {
     if (selectedGeneration) return
     if (wasSearched) return
@@ -157,6 +175,10 @@ const PokemonList = ({ navigation }) => {
     requestPokemonList(nextPageToRequest)
   }
 
+  /**
+   * Handler to manipulate to get or clear pokemons from generation
+   * @param {number} generationId - Id of pokemon generation
+   */
   const handleSelectGeneration = (generationId) => {
     dispatch(setPokemons([]))
 
@@ -170,12 +192,14 @@ const PokemonList = ({ navigation }) => {
     requestPokemonsFromGeneration(generationId)
   }
 
+  /**
+   * Handler to manipulate search pokemons or clear search
+   */
   const handleSearchPokemon = () => {
     if (!searchInput && !wasSearched) return Alert.alert('', 'Insert Pokemon name or number')
 
     dispatch(setSelectedGeneration(0))
     dispatch(setPokemons([]))
-    console.log(wasSearched, searchInput)
     if (wasSearched) {
       dispatch(setWasSearched(false))
       handleInputChange('searchInput')('')
@@ -186,7 +210,18 @@ const PokemonList = ({ navigation }) => {
     requestPokemonSearch()
   }
 
+  /**
+   * Handler to text input
+   * @param {string} inputName - Name of input to manipulate in store
+   * @param {string} text - Text from input event
+   */
   const handleInputChange = (inputName) => (text) => dispatch(handleChangeText(text, inputName))
+
+  /**
+   * Handler to navigate to pokemon selected
+   * @param {number | string} pokemonId - Id from pokemon
+   */
+  const handlePushToPokemon = (pokemonId) => () => navigation.push(ROUTES.pokemon, { pokemonId })
 
   useEffect(() => {
     requestPokemonList(0)
@@ -210,7 +245,7 @@ const PokemonList = ({ navigation }) => {
       <PokemonsFlatList
         data={pokemonList}
         numColumns={3}
-        renderItem={({ item, index }) => <Pokemon key={`${index}-${item.id}`} id={item.id} name={item.name} /> }
+        renderItem={({ item, index }) => <Pokemon key={`${index}-${item.id}`} id={item.id} name={item.name} handlePushToPokemon={handlePushToPokemon(item.id)} /> }
         onEndReached={handleLoadMorePokemon}
         onEndReachedThreshold={0.5}
         ListFooterComponent={() => <Loading visible={!!pokemonList.length && isLoading} /> }
