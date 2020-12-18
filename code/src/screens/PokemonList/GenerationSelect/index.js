@@ -1,7 +1,11 @@
 import React from 'react'
 import PropTypes from 'prop-types'
 
-import { GenerationSelectWrapper, Label, OptionsContainer, GenerationButton } from './style'
+import { COLORS, IMAGES} from '../../../style'
+
+import RoundButton from '../../../components/RoundButton'
+
+import { GenerationSelectWrapper, Label, OptionsContainer } from './style'
 
 const GenerationSelect = ({ generations, selected, handleSelectGeneration }) => (
   <GenerationSelectWrapper>
@@ -9,17 +13,17 @@ const GenerationSelect = ({ generations, selected, handleSelectGeneration }) => 
     <OptionsContainer>
       {
         generations.map((generation, index) => (
-          <GenerationButton
+          <RoundButton
             key={index}
-            selected={selected === generation.id}
+            backgroundColor={selected === generation.id ? COLORS.darkPrimaryBlue : COLORS.primaryBlue}
             onPress={() => handleSelectGeneration(generation.id)}
           >
             {
               selected === generation.id
-                ? <GenerationButton.Icon />
-                : <GenerationButton.Text>{generation.id}</GenerationButton.Text>
+                ? <RoundButton.Icon source={IMAGES.icons.cancelIcon} />
+                : <RoundButton.Text>{generation.id}</RoundButton.Text>
             }
-          </GenerationButton>
+          </RoundButton>
         ))
       }
     </OptionsContainer>

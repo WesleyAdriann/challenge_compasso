@@ -1,7 +1,11 @@
 import React from 'react'
 import PropTypes from 'prop-types'
 
-import { SearchBarWrapper, SearchInput, SearchButton } from './style'
+import { IMAGES } from '../../../style'
+
+import RoundButton from '../../../components/RoundButton'
+
+import { SearchBarWrapper, SearchInput } from './style'
 
 const SearchBar = ({ handleInputChange, searchValue, handleSearchPokemon, wasSearched }) => (
   <SearchBarWrapper>
@@ -10,9 +14,9 @@ const SearchBar = ({ handleInputChange, searchValue, handleSearchPokemon, wasSea
       onChangeText={handleInputChange('searchInput')}
       placeholder='Pokemon name or number'
     />
-    <SearchButton onPress={handleSearchPokemon}>
-      <SearchButton.Icon wasSearched={wasSearched} />
-    </SearchButton>
+    <RoundButton onPress={handleSearchPokemon}>
+      <RoundButton.Icon source={wasSearched ? IMAGES.icons.cancelIcon : IMAGES.icons.searchIcon} />
+    </RoundButton>
   </SearchBarWrapper>
 )
 
