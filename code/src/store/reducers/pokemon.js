@@ -3,6 +3,7 @@ import { pokemonTypes } from '../actionsTypes'
 const INITIAL_STATE = {
   pokemon: {},
   specie: {},
+  evolutions: [],
   isLoading: false
 }
 

@@ -74,3 +74,20 @@ export const getGenerationsList = (generationId = '') => {
       })
   })
 }
+
+/**
+ * Request to get evolution chain of pokemon
+ * @param {number} evolutionChainId - Evolution Chain id
+ */
+export const getPokemonEvolutionChain = (evolutionChainId) => {
+  const route = ENDPOINTS.pokeApi.evolutions(evolutionChainId)
+
+  return new Promise((resolve, reject) => {
+    pokeApi.get(route)
+      .then(resolve)
+      .catch((error) => {
+        console.log(`Error in getPokemonEvolutionChain: \n${error}\n ${error.response}\n ${error.message}`)
+        reject(error)
+      })
+  })
+}
