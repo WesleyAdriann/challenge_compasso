@@ -35,3 +35,8 @@ export const setTotalPokemons = (total) => ({
   type: pokemonListTypes.SETTOTALPOKEMONS,
   total
 })
+
+export const setWasSearched = (wasSearched) => ({
+  type: pokemonListTypes.SETWASSEARCHED,
+  wasSearched
+})

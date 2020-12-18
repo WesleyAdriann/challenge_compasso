@@ -10,9 +10,10 @@ import {
   setIsLoading,
   setGenerations,
   setTotalPokemons,
-  setSelectedGeneration
+  setSelectedGeneration,
+  setWasSearched
 } from '../../store/actions/pokemonList'
-import { getPokemonsList, getGenerationsList } from '../../services/pokeAPI'
+import { getPokemonsList, getGenerationsList, getPokemon } from '../../services/pokeAPI'
 
 import LoadingFull from '../../components/LoadingFull'
 import Loading from '../../components/Loading'
@@ -26,7 +27,17 @@ let requesTimeout = 0
 
 const PokemonList = ({ navigation }) => {
   const dispatch = useDispatch()
-  const { pokemonList, page, perPage, searchInput, isLoading, generationList, selectedGeneration, totalPokemons } = useSelector((state) => state.pokemonList)
+  const {
+    pokemonList,
+    page,
+    perPage,
+    searchInput,
+    isLoading,
+    generationList,
+    selectedGeneration,
+    totalPokemons,
+    wasSearched
+  } = useSelector((state) => state.pokemonList)
 
   const requestPokemonList = (pageToRequest) => {
     if (isNaN(pageToRequest)) return
@@ -42,15 +53,13 @@ const PokemonList = ({ navigation }) => {
           })
 
           // concat pokemons
-          if (pageToRequest) {
-            pokemons = [...pokemonList, ...pokemons]
-          }
+          if (pageToRequest) pokemons = [...pokemonList, ...pokemons]
 
           dispatch(setPokemons(pokemons))
           dispatch(setPage(pageToRequest))
           dispatch(setIsLoading(false))
           if (!totalPokemons) dispatch(setTotalPokemons(data.count))
-          if (selectedGeneration) dispatch(setSelectedGeneration(null))
+          if (selectedGeneration) dispatch(setSelectedGeneration(0))
         })
         .catch((error) => {
           console.log('requestPokemonList error:', error)
@@ -91,27 +100,57 @@ const PokemonList = ({ navigation }) => {
               const id = poke.url.split('pokemon-species/').pop().replace(/\D/g, '')
               return { ...poke, id }
             })
-            .sort(({ id: aId }, { id: bId }) => aId - bId)
+            .sort(({ id: pokeAId }, { id: pokeBId }) => pokeAId - pokeBId)
           dispatch(setPokemons(pokemons))
           dispatch(setPage(0))
           dispatch(setSelectedGeneration(generationId))
           dispatch(setIsLoading(false))
         })
+        .catch((error) => {
+          console.log('requestPokemonsFromGeneration error:', error)
+          Alert.alert('Attention', 'There was an error loading the pokémons', [
+            { text: 'Ok', onPress: () => dispatch(setIsLoading(false)) },
+            { text: 'Try Again', onPress: () => requestPokemonsFromGeneration(generationId) }
+          ])
+        })
     }, 500)
   }
 
   const requestPokemonSearch = () => {
-    if (!searchInput) Alert.alert('', 'Insert Pokemon name or number')
-
+    dispatch(setIsLoading(true))
     clearTimeout(requesTimeout)
     requesTimeout = setTimeout(() => {
-
+      getPokemon(searchInput)
+        .then(({ data }) => {
+          const pokemon = {
+            id: data.id,
+            name: data.name
+          }
+          dispatch(setPokemons([pokemon]))
+          dispatch(setPage(0))
+          dispatch(setWasSearched(true))
+          dispatch(setIsLoading(false))
+        })
+        .catch((error) => {
+          console.log('requestPokemonsFromGeneration error:', error)
+          if (error.response.status === 404) {
+            Alert.alert('Attention', 'Pokemon not finded', [
+              {
+                text: 'Ok',
+                onPress: () => {
+                  dispatch(setIsLoading(false))
+                  requestPokemonList(0)
+                }
+              }
+            ])
+          }
+        })
     }, 500)
   }
 
   const handleLoadMorePokemon = () => {
     if (selectedGeneration) return
-
+    if (wasSearched) return
     if (page * perPage >= totalPokemons) return Alert.alert('Attention', 'All pokemons are loaded')
 
     const nextPageToRequest = page + 1
@@ -127,7 +166,24 @@ const PokemonList = ({ navigation }) => {
       return
     }
 
+    dispatch(setWasSearched(false))
     requestPokemonsFromGeneration(generationId)
+  }
+
+  const handleSearchPokemon = () => {
+    if (!searchInput && !wasSearched) return Alert.alert('', 'Insert Pokemon name or number')
+
+    dispatch(setSelectedGeneration(0))
+    dispatch(setPokemons([]))
+    console.log(wasSearched, searchInput)
+    if (wasSearched) {
+      dispatch(setWasSearched(false))
+      handleInputChange('searchInput')('')
+      requestPokemonList(0)
+      return
+    }
+
+    requestPokemonSearch()
   }
 
   const handleInputChange = (inputName) => (text) => dispatch(handleChangeText(text, inputName))
@@ -143,7 +199,8 @@ const PokemonList = ({ navigation }) => {
       <SearchBar
         handleInputChange={handleInputChange}
         searchValue={searchInput}
-        handlePressSearchPokemon={requestPokemonSearch}
+        handleSearchPokemon={handleSearchPokemon}
+        wasSearched={wasSearched}
       />
       <GenerationSelect
         generations={generationList}

@@ -6,10 +6,7 @@ const INITIAL_STATE = {
   page: 0,
   perPage: 21,
   searchInput: '',
-  cache: {
-    PokemonList: [],
-    page: 0
-  },
+  wasSearched: false,
   generationList: [],
   selectedGeneration: 0,
   isLoading: false
@@ -56,6 +53,11 @@ const pokemonList = (state = INITIAL_STATE, action) => {
       return {
         ...state,
         generationList: action.generationList
+      }
+    case pokemonListTypes.SETWASSEARCHED:
+      return {
+        ...state,
+        wasSearched: action.wasSearched
       }
     default:
       return state
