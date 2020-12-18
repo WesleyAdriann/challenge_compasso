@@ -5,8 +5,8 @@ import { string } from '../../../utils'
 
 import { PokemonContainer, PokemonNumber, PokemonImage, PokemonName } from './style'
 
-const Pokemon = ({ id, name }) => (
-  <PokemonContainer>
+const Pokemon = ({ id, name, handlePushToPokemon }) => (
+  <PokemonContainer onPress={handlePushToPokemon}>
     <PokemonNumber>
       #{String(id).padStart(4, '0')}
     </PokemonNumber>
@@ -21,7 +21,8 @@ const Pokemon = ({ id, name }) => (
 
 Pokemon.propTypes = {
   id: PropTypes.oneOfType([PropTypes.string, PropTypes.number]).isRequired,
-  name: PropTypes.string.isRequired
+  name: PropTypes.string.isRequired,
+  handlePushToPokemon: PropTypes.func.isRequired
 }
 
 export default Pokemon

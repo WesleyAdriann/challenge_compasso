@@ -7,10 +7,10 @@ export const ScreenContainer = styled.SafeAreaView`
   height: 100%;
 `
 
-export const PokemonsFlatList = styled.FlatList.attrs(() => ({
-  contentContainerStyle: {
-    paddingBottom: 8
-  }
-}))`
-  flex-grow: 1;
+export const BackButtonWrapper = styled.View`
+  margin: 8px 0;
+`
+
+export const PokemonPrincipalDataWrapper = styled.View`
+  height: 300px;
 `

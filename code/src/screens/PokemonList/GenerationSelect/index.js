@@ -1,7 +1,7 @@
 import React from 'react'
 import PropTypes from 'prop-types'
 
-import { COLORS, IMAGES} from '../../../style'
+import { COLORS, IMAGES } from '../../../style'
 
 import RoundButton from '../../../components/RoundButton'
 
