@@ -1,9 +1,8 @@
 export const COLORS = {
-  primaryRed: '#c04c4b',
-  primaryBlack: '#464646',
+  primaryRed: '#D50000',
+  primaryBlack: '#050505',
   primatyGray: '#e7e7e6',
-  primaryBeige: '#f0dba5',
-  primaryBlue: '#6ea4bb',
-  darkPrimaryBlue: '#537b8c',
+  primaryBlue: '#004fff',
+  darkPrimaryBlue: '#0044db',
   grayOpacity: (opacity = 1) => `rgba(128, 128, 128, ${opacity})`
 }
