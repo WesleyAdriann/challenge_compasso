@@ -12,18 +12,20 @@ The application contains 2 screen, first to list all pokemons in infinity scroll
 
 - **/build** directory created after execute command build, where is located files for production;
 - **/code** directory where development code is located;
+    - **/android** directory where the android files is located;
+    - **/ios** directory where the ios files is located;
     - **/src** directory where the develop files is located;
-    - **/assets** directory where static files like fonts and images is located;
-    - **/components** directory where the react components is located;
-    - **/services** directory where the files related to services used in the application will be created, for example HTTP requests;
-    - **/settings** directory where project configuration and texts is located;
-    - **/store** directory where redux configuration is located;
-        - **/actions** directory where redux actions is located;
-        - **/actionsTypes** directory where files to configure the actions types to actions;
-        - **/reduces** directory where reducers is located;
-    - **/style** directory where global style, fonts imports and colors is located;
-    - **/utils** directory where files make it easy to develop;
-    - **/views** directory where de pages is located;
+      - **/assets** directory where static files like fonts and images is located;
+      - **/components** directory where the react components is located;
+      - **/services** directory where the files related to services used in the application will be created, for example HTTP requests;
+      - **/screens** directory where de pages is located;
+      - **/settings** directory where project configuration and texts is located;
+      - **/store** directory where redux configuration is located;
+          - **/actions** directory where redux actions is located;
+          - **/actionsTypes** directory where files to configure the actions types to actions;
+          - **/reduces** directory where reducers is located;
+      - **/style** directory where global style, fonts imports and colors is located;
+      - **/utils** directory where files make it easy to develop;
 
 ## Prerequisites
 
