@@ -4,7 +4,7 @@ import { Alert } from 'react-native'
 import PropTypes from 'prop-types'
 
 import { IMAGES, COLORS } from '../../style'
-import { setPokemon, setIsLoading } from '../../store/actions/pokemon'
+import { setPokemon, setIsLoading, setEvolutions } from '../../store/actions/pokemon'
 import { getPokemonSpecie, getPokemon, getPokemonEvolutionChain } from '../../services/pokeAPI'
 import { string } from '../../utils'
 
@@ -18,12 +18,14 @@ import {
   PokemonImage,
   PokemonPrincipalData,
   BadgesWrapper,
-  PokemonDataWrapper
+  PokemonDataWrapper,
+  SectionWrapper,
+  PokemonEvolutionsWrapper
 } from './style'
 
 const Pokemon = ({ navigation, route }) => {
   const dispatch = useDispatch()
-  const { pokemon, specie, isLoading } = useSelector((state) => state.pokemon)
+  const { pokemon, specie, isLoading, evolutions } = useSelector((state) => state.pokemon)
 
   const requestPokemonInformations = (pokemonId) => {
     const promiseArr = [
@@ -40,6 +42,17 @@ const Pokemon = ({ navigation, route }) => {
           pokemon.image = pokemon.sprites.front_default
         }
 
+        let description = ''
+
+        while (true) {
+          const flavorText = specie.flavor_text_entries.pop()
+          if (flavorText.language.name === 'en' || !specie.flavor_text_entries.length) {
+            description = flavorText.flavor_text
+            break
+          }
+        }
+        specie.description = description
+
         requestEvolutions(specie.evolution_chain.url)
         dispatch(setPokemon(pokemon, specie))
         dispatch(setIsLoading(false))
@@ -55,20 +68,20 @@ const Pokemon = ({ navigation, route }) => {
 
   const requestEvolutions = (evochainUrl) => {
     const id = evochainUrl.split('evolution-chain/').pop().replace(/\D/g, '')
-
     getPokemonEvolutionChain(id)
       .then(({ data }) => {
-        const evolutions = []
-        console.log(data)
+        const evolutionsList = []
         let { chain } = data
 
         while (true) {
-          evolutions.push(chain.species)
+          const { species } = chain
+          const specieId = species.url.split('pokemon-species/').pop().replace(/\D/g, '')
+          evolutionsList.push({ ...species, id: specieId })
           if (!chain.evolves_to.length) break
           chain = chain.evolves_to[0]
         }
 
-        console.log(evolutions)
+        dispatch(setEvolutions(evolutionsList))
       })
       .catch((error) => {
         console.log('getPokemonInformations error: ', error)
@@ -81,6 +94,7 @@ const Pokemon = ({ navigation, route }) => {
 
   const handleGoBack = () => {
     dispatch(setPokemon({}, {}))
+    dispatch(setEvolutions([]))
     navigation.pop()
   }
 
@@ -115,7 +129,35 @@ const Pokemon = ({ navigation, route }) => {
         </PokemonPrincipalData>
       </PokemonHeaderWrapper>
       <PokemonDataWrapper>
-
+        <SectionWrapper.Title>#{String(pokemon.id).padStart(4, '0')}</SectionWrapper.Title>
+        <SectionWrapper>
+          <SectionWrapper.Title>Description</SectionWrapper.Title>
+          <SectionWrapper.Text>{specie.description}</SectionWrapper.Text>
+        </SectionWrapper>
+        <SectionWrapper>
+          <SectionWrapper.Title>Technical features</SectionWrapper.Title>
+          <SectionWrapper.Text>Base XP: {pokemon.base_experience}</SectionWrapper.Text>
+          <SectionWrapper.Text>Weight: {pokemon.weight}</SectionWrapper.Text>
+          <SectionWrapper.Text>Height: {pokemon.height}</SectionWrapper.Text>
+        </SectionWrapper>
+        <SectionWrapper>
+          <SectionWrapper.Title>Stats</SectionWrapper.Title>
+          {
+            pokemon.stats?.map(({ stat, base_stat: baseStat }, index) => (
+              <SectionWrapper.Text key={index}>{string.capitalize(stat.name).replace('-', ' ')}: {baseStat}</SectionWrapper.Text>
+            ))
+          }
+        </SectionWrapper>
+        <SectionWrapper>
+          <SectionWrapper.Title>Evolution Chain</SectionWrapper.Title>
+          <PokemonEvolutionsWrapper>
+            {
+              evolutions.map((evo, index) => (
+                <PokemonEvolutionsWrapper.Image key={index} source={{ uri: `https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/${evo.id}.png` }} />
+              ))
+            }
+          </PokemonEvolutionsWrapper>
+        </SectionWrapper>
       </PokemonDataWrapper>
     </ScreenContainer>
   )

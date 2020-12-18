@@ -14,10 +14,13 @@ export const BackButtonWrapper = styled.View`
 export const PokemonHeaderWrapper = styled.View`
   flex-direction: row;
   padding: 8px;
+  position: relative;
+  z-index: 900;
 `
 
 export const PokemonImage = styled.Image`
   height: 160px;
+  resize-mode: cover;
   width: 160px;
 `
 
@@ -40,6 +43,7 @@ export const BadgesWrapper = styled.View`
 BadgesWrapper.Badge = styled.View`
   background-color: ${({ pokemonType }) => COLORS.pokemonBadges[pokemonType]};
   border-radius: 16px;
+  elevation: 3;
   padding: 8px;
   margin-left: ${({ index }) => index === 1 ? 4 : 0}px;
 `
@@ -49,6 +53,43 @@ BadgesWrapper.Text = styled.Text`
   color: white;
 `
 
-export const PokemonDataWrapper = styled.ScrollView`
+export const PokemonDataWrapper = styled.ScrollView.attrs(() => ({
+  contentContainerStyle: {
+    paddingVertical: 32
+  }
+}))`
   flex-grow: 1;
+  background-color: white;
+  border-top-left-radius: 16px;
+  border-top-right-radius: 16px;
+  padding: 0 16px 8px;
+  margin-top: -36px;
+  flex-grow: 1;
+`
+
+export const SectionWrapper = styled.View`
+  padding: 8px 8px 16px;
+  border-bottom-width: 1px;
+  border-color: ${COLORS.primaryRed};
+`
+
+SectionWrapper.Title = styled.Text`
+  ${globalStyles.defaultFont}
+  font-size: 16px;
+  font-weight: bold;
+  margin-bottom: 6px;
+`
+SectionWrapper.Text = styled.Text`
+  ${globalStyles.defaultFont}
+`
+
+export const PokemonEvolutionsWrapper = styled.View`
+  flex-direction: row;
+  justify-content: space-around;
+`
+
+PokemonEvolutionsWrapper.Image = styled.Image`
+  height: 96px;
+  resize-mode: cover;
+  width: 96px;
 `

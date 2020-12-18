@@ -22,6 +22,7 @@ RoundButton.Text = styled.Text`
 
 RoundButton.Icon = styled.Image`
   height: 16px;
+  resize-mode: cover;
   width: 16px;
 `
 

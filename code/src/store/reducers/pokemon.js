@@ -15,6 +15,11 @@ const pokemon = (state = INITIAL_STATE, action) => {
         pokemon: action.pokemon,
         specie: action.specie
       }
+    case pokemonTypes.SETEVOLUTIONS:
+      return {
+        ...state,
+        evolutions: action.evolutions
+      }
     case pokemonTypes.SETISLOADING:
       return {
         ...state,

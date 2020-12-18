@@ -6,6 +6,11 @@ export const setPokemon = (pokemon, specie) => ({
   specie
 })
 
+export const setEvolutions = (evolutions) => ({
+  type: pokemonTypes.SETEVOLUTIONS,
+  evolutions
+})
+
 export const setIsLoading = (isLoading) => ({
   type: pokemonTypes.SETISLOADING,
   isLoading
