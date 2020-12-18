@@ -38,19 +38,3 @@ SearchButton.Icon = styled.Image.attrs(({ wasSearched }) => ({
   height: 16px;
   width: 16px;
 `
-
-export const FiltersButton = styled.TouchableOpacity`
-  ${defaultStyle}
-  align-items: center;
-  background-color: ${COLORS.primaryBlue};
-  justify-content: center;
-  margin-left: 8px;
-  width: 40px;
-`
-
-FiltersButton.Icon = styled.Image.attrs(() => ({
-  source: IMAGES.icons.filterIcon
-}))`
-  height: 16px;
-  width: 16px;
-`

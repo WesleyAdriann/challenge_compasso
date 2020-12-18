@@ -10,6 +10,11 @@ export const setGenerations = (generationList) => ({
   generationList
 })
 
+export const setSelectedGeneration = (generationId) => ({
+  type: pokemonListTypes.SETSELECTEDGENERATION,
+  generationId
+})
+
 export const setPage = (page) => ({
   type: pokemonListTypes.SETPAGE,
   page
@@ -24,4 +29,9 @@ export const handleChangeText = (text, inputName) => ({
 export const setIsLoading = (isLoading) => ({
   type: pokemonListTypes.SETISLOADING,
   isLoading
+})
+
+export const setTotalPokemons = (total) => ({
+  type: pokemonListTypes.SETTOTALPOKEMONS,
+  total
 })

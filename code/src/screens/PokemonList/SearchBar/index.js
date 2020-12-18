@@ -1,7 +1,7 @@
 import React from 'react'
 import PropTypes from 'prop-types'
 
-import { SearchBarWrapper, SearchInput, SearchButton, FiltersButton } from './style'
+import { SearchBarWrapper, SearchInput, SearchButton } from './style'
 
 const SearchBar = ({ handleInputChange, searchValue = '', handlePressSearchPokemon }) => (
   <SearchBarWrapper>
@@ -13,9 +13,6 @@ const SearchBar = ({ handleInputChange, searchValue = '', handlePressSearchPokem
     <SearchButton onPress={handlePressSearchPokemon}>
       <SearchButton.Icon />
     </SearchButton>
-    <FiltersButton>
-      <FiltersButton.Icon />
-    </FiltersButton>
   </SearchBarWrapper>
 )
 
