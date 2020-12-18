@@ -4,6 +4,10 @@ Challenge Compasso - Pokedex
 
 This is a solution to Compasso Challange 
 
+This solution was created using the flux architecture with Redux, and I've used multiple libraries like React Navigation for screen navigation, styled components to create style and more.
+
+The application contains 2 screen, first to list all pokemons in infinity scroll with search filter and selection per pokemon generation. The second screen is detail of one pokemon, with description, technical features, status and evolution chain
+
 ## Hierarchy
 
 - **/build** directory created after execute command build, where is located files for production;
