@@ -16,5 +16,7 @@ export const Label = styled.Text`
 
 export const OptionsContainer = styled.View`
   flex-direction: row;
+  flex-wrap: wrap;
   justify-content: space-between;
+  padding-right: 8px;
 `

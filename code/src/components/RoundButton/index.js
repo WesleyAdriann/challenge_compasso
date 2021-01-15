@@ -12,6 +12,7 @@ const RoundButton = styled.TouchableOpacity`
   height: 40px;
   justify-content: center;
   margin-left: 8px;
+  margin-bottom: ${({ marginBottom }) => marginBottom || '0'}px;
   width: 40px;
 `
 

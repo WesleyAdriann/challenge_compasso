@@ -16,6 +16,7 @@ const GenerationSelect = ({ generations, selected, handleSelectGeneration }) => 
           <RoundButton
             key={index}
             backgroundColor={selected === generation.id ? COLORS.darkPrimaryBlue : COLORS.primaryBlue}
+            marginBottom={8}
             onPress={() => handleSelectGeneration(generation.id)}
           >
             {
