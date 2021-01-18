@@ -1,6 +1,6 @@
 import { pokemonListTypes } from '../actionsTypes'
 
-const INITIAL_STATE = {
+export const INITIAL_STATE = {
   pokemonList: [],
   totalPokemons: null,
   page: 0,

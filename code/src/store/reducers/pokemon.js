@@ -1,6 +1,6 @@
 import { pokemonTypes } from '../actionsTypes'
 
-const INITIAL_STATE = {
+export const INITIAL_STATE = {
   pokemon: {},
   specie: {},
   evolutions: [],

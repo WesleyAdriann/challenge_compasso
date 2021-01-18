@@ -1,0 +1,230 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`PokemonList screen renders correctly 1`] = `
+<RCTSafeAreaView
+  emulateUnlessSupported={true}
+  style={
+    Array [
+      Object {
+        "backgroundColor": "#e7e7e6",
+        "height": "100%",
+      },
+    ]
+  }
+>
+  <Modal
+    animationType="fade"
+    hardwareAccelerated={false}
+    transparent={true}
+    visible={false}
+  >
+    <View
+      style={
+        Array [
+          Object {
+            "alignItems": "center",
+            "backgroundColor": "rgba(128, 128, 128, 0.4)",
+            "justifyContent": "center",
+            "minHeight": 1334,
+            "paddingBottom": 10,
+            "paddingLeft": 10,
+            "paddingRight": 10,
+            "paddingTop": 10,
+            "width": 750,
+          },
+        ]
+      }
+    >
+      <ActivityIndicator
+        animating={true}
+        color="#D50000"
+        hidesWhenStopped={true}
+        size="large"
+      />
+      <Text
+        style={
+          Array [
+            Object {
+              "color": "white",
+              "paddingTop": 10,
+            },
+          ]
+        }
+      >
+        
+      </Text>
+    </View>
+  </Modal>
+  <View
+    style={
+      Array [
+        Object {
+          "flexDirection": "row",
+          "height": 48,
+          "marginBottom": 4,
+          "marginLeft": 0,
+          "marginRight": 0,
+          "marginTop": 4,
+          "paddingBottom": 4,
+          "paddingLeft": 8,
+          "paddingRight": 8,
+          "paddingTop": 4,
+        },
+      ]
+    }
+  >
+    <TextInput
+      allowFontScaling={true}
+      onChangeText={[Function]}
+      placeholder="Pokemon name or number"
+      rejectResponderTermination={true}
+      style={
+        Array [
+          Object {
+            "backgroundColor": "white",
+            "borderColor": "#050505",
+            "borderRadius": 200,
+            "borderWidth": 1,
+            "elevation": 3,
+            "flexGrow": 1,
+            "paddingBottom": 8,
+            "paddingLeft": 12,
+            "paddingRight": 12,
+            "paddingTop": 8,
+          },
+        ]
+      }
+      underlineColorAndroid="transparent"
+      value=""
+    />
+    <View
+      accessible={true}
+      focusable={true}
+      onClick={[Function]}
+      onResponderGrant={[Function]}
+      onResponderMove={[Function]}
+      onResponderRelease={[Function]}
+      onResponderTerminate={[Function]}
+      onResponderTerminationRequest={[Function]}
+      onStartShouldSetResponder={[Function]}
+      style={
+        Object {
+          "alignItems": "center",
+          "backgroundColor": "#D50000",
+          "borderColor": "#050505",
+          "borderRadius": 200,
+          "borderWidth": 1,
+          "elevation": 3,
+          "height": 40,
+          "justifyContent": "center",
+          "marginBottom": 0,
+          "marginLeft": 8,
+          "opacity": 1,
+          "width": 40,
+        }
+      }
+    >
+      <Image
+        source={
+          Object {
+            "testUri": "../../../src/assets/images/icons/search.png",
+          }
+        }
+        style={
+          Array [
+            Object {
+              "height": 16,
+              "resizeMode": "cover",
+              "width": 16,
+            },
+          ]
+        }
+      />
+    </View>
+  </View>
+  <View
+    style={
+      Array [
+        Object {
+          "marginBottom": 8,
+          "marginLeft": 8,
+          "marginRight": 8,
+          "marginTop": 0,
+        },
+      ]
+    }
+  >
+    <Text
+      style={
+        Array [
+          Object {
+            "color": "#050505",
+            "fontFamily": "Roboto",
+            "fontSize": 12,
+            "marginBottom": 2,
+            "textAlign": "center",
+          },
+        ]
+      }
+    >
+      Generations
+    </Text>
+    <View
+      style={
+        Array [
+          Object {
+            "flexDirection": "row",
+            "flexWrap": "wrap",
+            "justifyContent": "space-between",
+            "paddingRight": 8,
+          },
+        ]
+      }
+    />
+  </View>
+  <RCTScrollView
+    ListFooterComponent={[Function]}
+    contentContainerStyle={
+      Object {
+        "paddingBottom": 8,
+      }
+    }
+    data={Array []}
+    disableVirtualization={false}
+    getItem={[Function]}
+    getItemCount={[Function]}
+    horizontal={false}
+    initialNumToRender={10}
+    keyExtractor={[Function]}
+    maxToRenderPerBatch={10}
+    onContentSizeChange={[Function]}
+    onEndReached={[Function]}
+    onEndReachedThreshold={0.5}
+    onLayout={[Function]}
+    onMomentumScrollEnd={[Function]}
+    onScroll={[Function]}
+    onScrollBeginDrag={[Function]}
+    onScrollEndDrag={[Function]}
+    removeClippedSubviews={false}
+    renderItem={[Function]}
+    scrollEventThrottle={50}
+    stickyHeaderIndices={Array []}
+    style={
+      Array [
+        Object {
+          "flexGrow": 1,
+        },
+      ]
+    }
+    updateCellsBatchingPeriod={50}
+    viewabilityConfigCallbackPairs={Array []}
+    windowSize={21}
+  >
+    <View>
+      <View
+        onLayout={[Function]}
+      />
+    </View>
+  </RCTScrollView>
+</RCTSafeAreaView>
+`;

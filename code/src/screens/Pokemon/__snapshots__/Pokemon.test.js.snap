@@ -1,0 +1,400 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Pokemon screen renders correctly 1`] = `
+<RCTSafeAreaView
+  emulateUnlessSupported={true}
+  style={
+    Array [
+      Object {
+        "backgroundColor": "#e7e7e6",
+        "height": "100%",
+      },
+    ]
+  }
+>
+  <Modal
+    animationType="fade"
+    hardwareAccelerated={false}
+    transparent={true}
+    visible={false}
+  >
+    <View
+      style={
+        Array [
+          Object {
+            "alignItems": "center",
+            "backgroundColor": "rgba(128, 128, 128, 0.4)",
+            "justifyContent": "center",
+            "minHeight": 1334,
+            "paddingBottom": 10,
+            "paddingLeft": 10,
+            "paddingRight": 10,
+            "paddingTop": 10,
+            "width": 750,
+          },
+        ]
+      }
+    >
+      <ActivityIndicator
+        animating={true}
+        color="#D50000"
+        hidesWhenStopped={true}
+        size="large"
+      />
+      <Text
+        style={
+          Array [
+            Object {
+              "color": "white",
+              "paddingTop": 10,
+            },
+          ]
+        }
+      >
+        
+      </Text>
+    </View>
+  </Modal>
+  <View
+    style={
+      Array [
+        Object {
+          "marginBottom": 8,
+          "marginLeft": 0,
+          "marginRight": 0,
+          "marginTop": 8,
+        },
+      ]
+    }
+  >
+    <View
+      accessible={true}
+      focusable={true}
+      onClick={[Function]}
+      onResponderGrant={[Function]}
+      onResponderMove={[Function]}
+      onResponderRelease={[Function]}
+      onResponderTerminate={[Function]}
+      onResponderTerminationRequest={[Function]}
+      onStartShouldSetResponder={[Function]}
+      style={
+        Object {
+          "alignItems": "center",
+          "backgroundColor": "#004fff",
+          "borderColor": "#050505",
+          "borderRadius": 200,
+          "borderWidth": 1,
+          "elevation": 3,
+          "height": 40,
+          "justifyContent": "center",
+          "marginBottom": 0,
+          "marginLeft": 8,
+          "opacity": 1,
+          "width": 40,
+        }
+      }
+    >
+      <Image
+        source={
+          Object {
+            "testUri": "../../../src/assets/images/icons/back.png",
+          }
+        }
+        style={
+          Array [
+            Object {
+              "height": 16,
+              "resizeMode": "cover",
+              "width": 16,
+            },
+          ]
+        }
+      />
+    </View>
+  </View>
+  <View
+    style={
+      Array [
+        Object {
+          "flexDirection": "row",
+          "paddingBottom": 8,
+          "paddingLeft": 8,
+          "paddingRight": 8,
+          "paddingTop": 8,
+          "position": "relative",
+          "zIndex": 900,
+        },
+      ]
+    }
+  >
+    <Image
+      source={
+        Object {
+          "uri": undefined,
+        }
+      }
+      style={
+        Array [
+          Object {
+            "height": 160,
+            "resizeMode": "cover",
+            "width": 160,
+          },
+        ]
+      }
+    />
+    <View
+      style={
+        Array [
+          Object {
+            "alignItems": "center",
+            "flexGrow": 1,
+            "justifyContent": "center",
+          },
+        ]
+      }
+    >
+      <Text
+        style={
+          Array [
+            Object {
+              "color": "#050505",
+              "fontFamily": "Roboto",
+              "fontSize": 24,
+              "fontWeight": "bold",
+            },
+          ]
+        }
+      >
+        
+      </Text>
+      <View
+        style={
+          Array [
+            Object {
+              "flexDirection": "row",
+            },
+          ]
+        }
+      />
+    </View>
+  </View>
+  <RCTScrollView
+    contentContainerStyle={
+      Object {
+        "paddingVertical": 32,
+      }
+    }
+    style={
+      Array [
+        Object {
+          "backgroundColor": "white",
+          "borderTopLeftRadius": 16,
+          "borderTopRightRadius": 16,
+          "flexGrow": 1,
+          "marginTop": -36,
+          "paddingBottom": 8,
+          "paddingLeft": 16,
+          "paddingRight": 16,
+          "paddingTop": 0,
+        },
+      ]
+    }
+  >
+    <View>
+      <Text
+        style={
+          Array [
+            Object {
+              "color": "#050505",
+              "fontFamily": "Roboto",
+              "fontSize": 16,
+              "fontWeight": "bold",
+              "marginBottom": 6,
+            },
+          ]
+        }
+      >
+        #
+        undefined
+      </Text>
+      <View
+        style={
+          Array [
+            Object {
+              "borderBottomWidth": 1,
+              "borderColor": "#D50000",
+              "paddingBottom": 16,
+              "paddingLeft": 8,
+              "paddingRight": 8,
+              "paddingTop": 8,
+            },
+          ]
+        }
+      >
+        <Text
+          style={
+            Array [
+              Object {
+                "color": "#050505",
+                "fontFamily": "Roboto",
+                "fontSize": 16,
+                "fontWeight": "bold",
+                "marginBottom": 6,
+              },
+            ]
+          }
+        >
+          Description
+        </Text>
+        <Text
+          style={
+            Array [
+              Object {
+                "color": "#050505",
+                "fontFamily": "Roboto",
+              },
+            ]
+          }
+        />
+      </View>
+      <View
+        style={
+          Array [
+            Object {
+              "borderBottomWidth": 1,
+              "borderColor": "#D50000",
+              "paddingBottom": 16,
+              "paddingLeft": 8,
+              "paddingRight": 8,
+              "paddingTop": 8,
+            },
+          ]
+        }
+      >
+        <Text
+          style={
+            Array [
+              Object {
+                "color": "#050505",
+                "fontFamily": "Roboto",
+                "fontSize": 16,
+                "fontWeight": "bold",
+                "marginBottom": 6,
+              },
+            ]
+          }
+        >
+          Technical features
+        </Text>
+        <Text
+          style={
+            Array [
+              Object {
+                "color": "#050505",
+                "fontFamily": "Roboto",
+              },
+            ]
+          }
+        >
+          Base XP: 
+        </Text>
+        <Text
+          style={
+            Array [
+              Object {
+                "color": "#050505",
+                "fontFamily": "Roboto",
+              },
+            ]
+          }
+        >
+          Weight: 
+        </Text>
+        <Text
+          style={
+            Array [
+              Object {
+                "color": "#050505",
+                "fontFamily": "Roboto",
+              },
+            ]
+          }
+        >
+          Height: 
+        </Text>
+      </View>
+      <View
+        style={
+          Array [
+            Object {
+              "borderBottomWidth": 1,
+              "borderColor": "#D50000",
+              "paddingBottom": 16,
+              "paddingLeft": 8,
+              "paddingRight": 8,
+              "paddingTop": 8,
+            },
+          ]
+        }
+      >
+        <Text
+          style={
+            Array [
+              Object {
+                "color": "#050505",
+                "fontFamily": "Roboto",
+                "fontSize": 16,
+                "fontWeight": "bold",
+                "marginBottom": 6,
+              },
+            ]
+          }
+        >
+          Stats
+        </Text>
+      </View>
+      <View
+        style={
+          Array [
+            Object {
+              "borderBottomWidth": 1,
+              "borderColor": "#D50000",
+              "paddingBottom": 16,
+              "paddingLeft": 8,
+              "paddingRight": 8,
+              "paddingTop": 8,
+            },
+          ]
+        }
+      >
+        <Text
+          style={
+            Array [
+              Object {
+                "color": "#050505",
+                "fontFamily": "Roboto",
+                "fontSize": 16,
+                "fontWeight": "bold",
+                "marginBottom": 6,
+              },
+            ]
+          }
+        >
+          Evolution Chain
+        </Text>
+        <View
+          style={
+            Array [
+              Object {
+                "flexDirection": "row",
+                "justifyContent": "space-around",
+              },
+            ]
+          }
+        />
+      </View>
+    </View>
+  </RCTScrollView>
+</RCTSafeAreaView>
+`;
