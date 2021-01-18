@@ -67,22 +67,6 @@ export const PokemonDataWrapper = styled.ScrollView.attrs(() => ({
   flex-grow: 1;
 `
 
-export const SectionWrapper = styled.View`
-  padding: 8px 8px 16px;
-  border-bottom-width: 1px;
-  border-color: ${COLORS.primaryRed};
-`
-
-SectionWrapper.Title = styled.Text`
-  ${globalStyles.defaultFont}
-  font-size: 16px;
-  font-weight: bold;
-  margin-bottom: 6px;
-`
-SectionWrapper.Text = styled.Text`
-  ${globalStyles.defaultFont}
-`
-
 export const PokemonEvolutionsWrapper = styled.View`
   flex-direction: row;
   justify-content: space-around;

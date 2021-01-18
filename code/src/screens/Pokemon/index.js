@@ -11,6 +11,9 @@ import { string } from '../../utils'
 import LoadingFull from '../../components/LoadingFull'
 import RoundButton from '../../components/RoundButton'
 
+import Section from './Section'
+import { Title as SectionTitle } from './Section/style'
+
 import {
   ScreenContainer,
   BackButtonWrapper,
@@ -19,7 +22,6 @@ import {
   PokemonPrincipalData,
   BadgesWrapper,
   PokemonDataWrapper,
-  SectionWrapper,
   PokemonEvolutionsWrapper
 } from './style'
 
@@ -129,27 +131,26 @@ const Pokemon = ({ navigation, route }) => {
         </PokemonPrincipalData>
       </PokemonHeaderWrapper>
       <PokemonDataWrapper>
-        <SectionWrapper.Title>#{String(pokemon.id).padStart(4, '0')}</SectionWrapper.Title>
-        <SectionWrapper>
-          <SectionWrapper.Title>Description</SectionWrapper.Title>
-          <SectionWrapper.Text>{specie.description}</SectionWrapper.Text>
-        </SectionWrapper>
-        <SectionWrapper>
-          <SectionWrapper.Title>Technical features</SectionWrapper.Title>
-          <SectionWrapper.Text>Base XP: {pokemon.base_experience}</SectionWrapper.Text>
-          <SectionWrapper.Text>Weight: {pokemon.weight}</SectionWrapper.Text>
-          <SectionWrapper.Text>Height: {pokemon.height}</SectionWrapper.Text>
-        </SectionWrapper>
-        <SectionWrapper>
-          <SectionWrapper.Title>Stats</SectionWrapper.Title>
-          {
-            pokemon.stats?.map(({ stat, base_stat: baseStat }, index) => (
-              <SectionWrapper.Text key={index}>{string.capitalize(stat.name).replace('-', ' ')}: {baseStat}</SectionWrapper.Text>
-            ))
+        <SectionTitle>#{String(pokemon.id).padStart(4, '0')}</SectionTitle>
+        <Section
+          title='Description'
+          texts={[specie.description]}
+        />
+        <Section
+          title='Technical features'
+          texts={[
+            `Base XP: ${pokemon.base_experience}`,
+            `Weight: ${pokemon.weight}`,
+            `Height: ${pokemon.height}`
+          ]}
+        />
+        <Section
+          title='Stats'
+          texts={
+            pokemon.stats?.map(({ stat, base_stat: baseStat }) => `${string.capitalize(stat.name).replace('-', ' ')}: ${baseStat}`)
           }
-        </SectionWrapper>
-        <SectionWrapper>
-          <SectionWrapper.Title>Evolution Chain</SectionWrapper.Title>
+        />
+        <Section title='Evolution Chain'>
           <PokemonEvolutionsWrapper>
             {
               evolutions.map((evo, index) => (
@@ -157,7 +158,7 @@ const Pokemon = ({ navigation, route }) => {
               ))
             }
           </PokemonEvolutionsWrapper>
-        </SectionWrapper>
+        </Section>
       </PokemonDataWrapper>
     </ScreenContainer>
   )
