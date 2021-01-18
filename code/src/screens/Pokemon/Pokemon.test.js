@@ -11,13 +11,17 @@ describe('Pokemon screen', () => {
   test('renders correctly', () => {
     const mockStore = configureStore({})
     const store = mockStore({pokemon: INITIAL_STATE})
-  
-    const pop = jest.fn()
-    const route = { params: 1 }
+
+    const props = {
+      navigation: {
+        pop: jest.fn(),
+      },
+      route:  { params: { pokemonId: 1 } }
+    }
   
     const tree = renderer.create(
       <Provider store={store}>
-        <Pokemon navigation={{ pop }} route={route} />
+        <Pokemon {...props} />
       </Provider>
     ).toJSON()
     expect(tree).toMatchSnapshot()

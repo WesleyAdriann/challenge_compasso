@@ -1,0 +1,76 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Pokemon Component renders correctly 1`] = `
+<View
+  accessible={true}
+  focusable={true}
+  onClick={[Function]}
+  onResponderGrant={[Function]}
+  onResponderMove={[Function]}
+  onResponderRelease={[Function]}
+  onResponderTerminate={[Function]}
+  onResponderTerminationRequest={[Function]}
+  onStartShouldSetResponder={[Function]}
+  style={
+    Object {
+      "alignItems": "center",
+      "backgroundColor": "white",
+      "borderRadius": 8,
+      "elevation": 3,
+      "flexGrow": 1,
+      "marginBottom": 8,
+      "marginLeft": 8,
+      "marginRight": 8,
+      "marginTop": 8,
+      "opacity": 1,
+      "paddingBottom": 4,
+      "paddingLeft": 0,
+      "paddingRight": 0,
+      "paddingTop": 4,
+    }
+  }
+>
+  <Text
+    style={
+      Array [
+        Object {
+          "color": "#050505",
+          "fontFamily": "Roboto",
+          "opacity": 0.6,
+        },
+      ]
+    }
+  >
+    #
+    0001
+  </Text>
+  <Image
+    source={
+      Object {
+        "uri": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/1.png",
+      }
+    }
+    style={
+      Array [
+        Object {
+          "height": 96,
+          "resizeMode": "cover",
+          "width": 96,
+        },
+      ]
+    }
+  />
+  <Text
+    style={
+      Array [
+        Object {
+          "color": "#050505",
+          "fontFamily": "Roboto",
+        },
+      ]
+    }
+  >
+    Bulbasaur
+  </Text>
+</View>
+`;

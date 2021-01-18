@@ -13,11 +13,15 @@ describe('PokemonList screen', () => {
     const mockStore = configureStore({})
     const store = mockStore({pokemonList: INITIAL_STATE})
   
-    const push = jest.fn();
+    const props = {
+      navigation: {
+        push: jest.fn(),
+      }
+    }
   
     const tree = renderer.create(
       <Provider store={store}>
-        <PokemonList navigation={{ push }} />
+        <PokemonList {...props} />
       </Provider>
     ).toJSON()
     expect(tree).toMatchSnapshot()
