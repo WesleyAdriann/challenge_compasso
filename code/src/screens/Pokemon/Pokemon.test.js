@@ -1,6 +1,6 @@
 import React from 'react'
 import renderer from 'react-test-renderer'
-import configureStore from 'redux-mock-store';
+import configureStore from 'redux-mock-store'
 import { Provider } from 'react-redux'
 
 import { INITIAL_STATE } from '../../store/reducers/pokemon' 
@@ -16,9 +16,9 @@ describe('Pokemon screen', () => {
       navigation: {
         pop: jest.fn(),
       },
-      route:  { params: { pokemonId: 1 } }
+      route: { params: { pokemonId: 1 } }
     }
-  
+    
     const tree = renderer.create(
       <Provider store={store}>
         <Pokemon {...props} />
@@ -26,6 +26,4 @@ describe('Pokemon screen', () => {
     ).toJSON()
     expect(tree).toMatchSnapshot()
   })
-
 })
-
