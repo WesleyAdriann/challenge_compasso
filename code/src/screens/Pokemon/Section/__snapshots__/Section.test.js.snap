@@ -1,0 +1,34 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Section Component renders correctly 1`] = `
+<View
+  style={
+    Array [
+      Object {
+        "borderBottomWidth": 1,
+        "borderColor": "#D50000",
+        "paddingBottom": 16,
+        "paddingLeft": 8,
+        "paddingRight": 8,
+        "paddingTop": 8,
+      },
+    ]
+  }
+>
+  <Text
+    style={
+      Array [
+        Object {
+          "color": "#050505",
+          "fontFamily": "Roboto",
+          "fontSize": 16,
+          "fontWeight": "bold",
+          "marginBottom": 6,
+        },
+      ]
+    }
+  >
+    renders correctly test
+  </Text>
+</View>
+`;

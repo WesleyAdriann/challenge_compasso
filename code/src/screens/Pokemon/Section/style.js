@@ -18,4 +18,3 @@ export const Title = styled.Text`
 export const Text = styled.Text`
   ${globalStyles.defaultFont}
 `
-

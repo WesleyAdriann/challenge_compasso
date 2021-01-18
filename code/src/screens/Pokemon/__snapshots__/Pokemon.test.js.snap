@@ -297,7 +297,7 @@ exports[`Pokemon screen renders correctly 1`] = `
             ]
           }
         >
-          Base XP: 
+          Base XP: undefined
         </Text>
         <Text
           style={
@@ -309,7 +309,7 @@ exports[`Pokemon screen renders correctly 1`] = `
             ]
           }
         >
-          Weight: 
+          Weight: undefined
         </Text>
         <Text
           style={
@@ -321,7 +321,7 @@ exports[`Pokemon screen renders correctly 1`] = `
             ]
           }
         >
-          Height: 
+          Height: undefined
         </Text>
       </View>
       <View
