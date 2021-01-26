@@ -13,8 +13,9 @@ const SearchBar = ({ handleInputChange, searchValue, handleSearchPokemon, wasSea
       value={searchValue}
       onChangeText={handleInputChange('searchInput')}
       placeholder='Pokemon name or number'
+      testID='searchBarInput'
     />
-    <RoundButton onPress={handleSearchPokemon}>
+    <RoundButton onPress={handleSearchPokemon} testID='searchBarButton'>
       <RoundButton.Icon source={wasSearched ? IMAGES.icons.cancelIcon : IMAGES.icons.searchIcon} />
     </RoundButton>
   </SearchBarWrapper>
